@@ -1,0 +1,35 @@
+{% extends "instagram/layout.html" %}
+{% load bootstrap4 %}
+Post Detail
+{% block title %}
+Instagram / Post List
+{% endblock title %}
+{% block content %}
+<h2>Author: {{ post.author }}</h2>
+
+{% if post.photo %}
+<div>
+    <img src="{{ post.photo.url }}"/>
+</div>
+{% endif %}
+
+{{ post.message|linebreaks }}
+
+<!-- linebreaks, linbreaksbr -->
+<hr/>
+<div class="d-flex align-items-center">
+    <a href="{% url 'instagram:post_list' %}" class="btn btn-dark " style="font-size: 40px">
+        목록
+    </a>
+    <a href="{% url 'instagram:post_edit' post.pk %}" class="btn btn-light" style="font-size: 40px">
+        수정
+    </a>
+    <a href="{% url 'instagram:post_delete' post.pk %}" class="btn btn-danger" style="font-size: 40px">
+        삭제
+    </a>
+</div>
+{% endblock content %}
+
+
+
+
